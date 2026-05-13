@@ -266,18 +266,3 @@ jobs:
               run: |
                   docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
                       $(printf '${{ vars.DOCKER_USERNAME }}/${{ needs.release.outputs.repo-name }}@sha256:%s ' *)
-
-    description:
-        runs-on: ubuntu-slim
-        needs: [check-env, release]
-        if: needs.check-env.outputs.check-docker == 'true'
-        timeout-minutes: 5
-        steps:
-            - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-            - name: Docker Hub Description
-              uses: peter-evans/dockerhub-description@1b9a80c056b620d92cedb9d9b5a223409c68ddfa # v5.0.0
-              with:
-                  username: ${{ vars.DOCKER_USERNAME }}
-                  password: ${{ secrets.DOCKER_PASSWORD }}
-                  repository: ${{ vars.DOCKER_USERNAME }}/${{ needs.release.outputs.repo-name }}

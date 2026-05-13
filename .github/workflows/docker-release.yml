@@ -95,8 +95,7 @@ jobs:
                       ghcr.io/${{ github.repository }}
                   tags: |
                       type=raw,value=latest,enable=true
-                      type=raw,value={{date 'YYYY-MM-DD'}},enable=true
-                      type=sha,format=long,prefix=,enable=true
+                      type=raw,value={{date 'YYYYMMDD'}},enable=true
                   flavor: latest=false
 
             - name: Extract image names (ordinary version)
@@ -148,8 +147,7 @@ jobs:
                       ghcr.io/${{ github.repository }}
                   tags: |
                       type=raw,value=chromium-bundled,enable=true
-                      type=raw,value=chromium-bundled-{{date 'YYYY-MM-DD'}},enable=true
-                      type=sha,format=long,prefix=chromium-bundled-,enable=true
+                      type=raw,value=chromium-bundled-{{date 'YYYYMMDD'}},enable=true
                   flavor: latest=false
 
             - name: Extract image names (Chromium-bundled version)
@@ -235,8 +233,7 @@ jobs:
                       ghcr.io/${{ github.repository }}
                   tags: |
                       type=raw,value=latest,enable=true
-                      type=raw,value={{date 'YYYY-MM-DD'}},enable=true
-                      type=sha,format=long,prefix=,enable=true
+                      type=raw,value={{date 'YYYYMMDD'}},enable=true
                   flavor: latest=false
 
             - name: Create manifest list and push (ordinary version)
@@ -261,8 +258,7 @@ jobs:
                       ghcr.io/${{ github.repository }}
                   tags: |
                       type=raw,value=chromium-bundled,enable=true
-                      type=raw,value=chromium-bundled-{{date 'YYYY-MM-DD'}},enable=true
-                      type=sha,format=long,prefix=chromium-bundled-,enable=true
+                      type=raw,value=chromium-bundled-{{date 'YYYYMMDD'}},enable=true
                   flavor: latest=false
 
             - name: Create manifest list and push (Chromium-bundled version)
